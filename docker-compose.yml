@@ -1,0 +1,25 @@
+# IDL Service Design Studio —— Docker Compose 一键部署（NAS / 服务器）
+# 用法：docker compose up -d
+# 访问：http://<NAS局域网IP>:8010
+services:
+  idlstudio:
+    # 镜像发布后（ghcr.io）直接拉取；发布前可用源码本地构建，见 README「从源码构建」
+    image: ghcr.io/raysico/idlstudio:1.0.0
+    container_name: idlstudio
+    restart: unless-stopped
+    ports:
+      # 默认绑所有网卡（NAS 局域网/容器网络访问）
+      # 若只想本机访问，改为 "127.0.0.1:8010:8010"
+      - "8010:8010"
+    volumes:
+      # 项目数据（project.json）持久化到命名卷，重建容器不丢
+      - idlstudio-data:/app/data
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8010/api/health"]
+      interval: 30s
+      timeout: 3s
+      start_period: 10s
+      retries: 3
+
+volumes:
+  idlstudio-data:
