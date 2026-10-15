@@ -4,7 +4,7 @@
 services:
   idlstudio:
     # 镜像发布后（ghcr.io）直接拉取；发布前可用源码本地构建，见 README「从源码构建」
-    image: ghcr.io/raysico/idlstudio:1.1.0
+    image: ghcr.io/raysico/idlstudio:1.1.2
     container_name: idlstudio
     restart: unless-stopped
     ports:
