@@ -24,7 +24,7 @@ docker compose up -d
 ```bash
 git clone https://github.com/raysico/IDLstudio.git
 cd IDLstudio
-docker build -t ghcr.io/raysico/idlstudio:1.0.1 .
+docker build -t ghcr.io/raysico/idlstudio:1.1.0 .
 # 然后回到 compose 目录 docker compose up -d
 ```
 
@@ -57,4 +57,4 @@ docker compose pull && docker compose up -d
 |---|---|---|
 | 端口 | `8010:8010` | 只限本机访问可改 `127.0.0.1:8010:8010` |
 | 数据卷 | `idlstudio-data` | 或 bind mount 到 NAS 目录 |
-| 镜像 | `ghcr.io/raysico/idlstudio:1.0.1` | 多架构（amd64 / arm64） |
+| 镜像 | `ghcr.io/raysico/idlstudio:1.1.0` | 多架构（amd64 / arm64） |
